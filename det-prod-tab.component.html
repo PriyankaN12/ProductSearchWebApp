@@ -1,0 +1,32 @@
+<app-no-result-tab *ngIf="nor()"></app-no-result-tab>
+<div *ngIf="!nor()">
+<table class="table table-dark table-striped tbl">
+    <tbody>
+        <tr *ngIf="details.hasOwnProperty('PictureURL') && details['PictureURL'].length>0">
+          <th style="width: 40%">Product Images</th>
+          <td > <a (click)="get_prod_img()">View Product Images here</a></td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('Subtitle')">
+          <th style="width: 40%">Subtitle</th>
+          <td > {{details['Subtitle']}}</td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('CurrentPrice') ">
+          <th style="width: 40%">Price</th>
+          <td > {{get_price()}}</td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('Location')">
+          <th style="width: 40%">Location</th>
+          <td > {{details['Location']}}</td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('ReturnPolicy')">
+          <th style="width: 40%">Return Policy (US)</th>
+          <td > {{get_returns()}}</td>
+        </tr>
+        <tr *ngFor="let it of get_item_spec()">
+          <th style="width: 40%">{{it['Name']}}</th>
+          <td > {{it['Value']}}</td>
+        </tr>
+    </tbody>
+
+</table>
+</div>

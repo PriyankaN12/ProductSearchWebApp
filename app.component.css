@@ -1,0 +1,56 @@
+.bg-black{
+  background-color: black;
+}
+.form-group .required:after{
+  content:"*";
+  color: red;
+}
+
+.yellow{
+  color:yellow;
+}
+.red{
+  color:red;
+}
+.purple{
+  color:purple;
+}
+.blue{
+  color:blue;
+}
+.turquoise{
+  color:#40E0D0;
+}
+.green{
+  color:green;
+}
+.silver{
+  color:silver;
+}
+.btn-light:disabled {
+    opacity: 0.8;
+}
+
+a.nav-link.active{
+  color:white;
+  background-color: black;
+}
+@media (min-width:771px) {
+   .container
+  { width: 75% !important;
+    margin: auto !important;
+  }
+  .prg_bar{
+    width:75%;
+  }
+
+ }
+ @media (max-width:770px) {
+   .mycl{
+     display: flex;
+     justify-content: center;
+   }
+   .prg_bar{
+     width:100%;
+   }
+ }

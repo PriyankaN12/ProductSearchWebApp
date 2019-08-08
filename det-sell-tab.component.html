@@ -1,0 +1,44 @@
+<div *ngIf="!no_res">
+<table class="table table-striped table-dark">
+    <tbody>
+        <tr *ngIf="seller_n.length>0" class="h-5">
+          <td colspan=2 style="text-align:center;">{{seller_n}}</td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('FeedbackScore')">
+          <th style="width: 50%">Feedback Score</th>
+          <td style="width: 50%"> {{details['FeedbackScore']}}</td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('PositiveFeedbackPercent')">
+          <th style="width: 50%">Popularity</th>
+          <td style="width: 50%"> <div class="progress-wrapper">
+            <round-progress [current]="details['PositiveFeedbackPercent']" [max]="100" [color]="'green'" [stroke]="11"  [responsive]="true"></round-progress>
+              <div class="text">{{details['PositiveFeedbackPercent']}}</div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('FeedbackRatingStar') ">
+          <th style="width: 50%">Feedback Rating Star</th>
+          <td style="width: 50%"> <i class="material-icons md-18 align-middle {{color(details['FeedbackRatingStar'])}}" *ngIf="details.FeedbackRatingStar!='None'">{{star()}}</i>
+          </td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('TopRatedSeller')">
+          <th style="width: 50%">Top Rated</th>
+          <td style="width: 50%">
+            <i class="material-icons md-18 align-middle green" *ngIf="details['TopRatedSeller']==true">check</i>
+            <i class="material-icons md-18 align-middle red" *ngIf="details['TopRatedSeller']==false" >close</i>
+          </td>
+        </tr>
+        <tr *ngIf="store.hasOwnProperty('StoreName')">
+          <th style="width: 50%">Store Name</th>
+          <td style="width: 50%"> {{store['StoreName']}}</td>
+        </tr>
+        <tr *ngIf="store.hasOwnProperty('StoreURL')">
+          <th style="width: 50%">Buy Product At </th>
+          <td style="width: 50%"> <a href="{{store['StoreURL']}}">Store</a>
+          </td>
+        </tr>
+    </tbody>
+
+</table>
+</div>
+<app-no-result-tab *ngIf="no_res" ></app-no-result-tab>

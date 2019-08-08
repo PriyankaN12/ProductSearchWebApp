@@ -1,0 +1,8 @@
+<div *ngIf="!no_res">
+  <div class="card-columns" >
+    <div class="card" *ngFor="let item of ch_photos" >
+      <a href="{{item.link}}" target="_blank" [class.d-none]="item.link==''"><img class="card-img bord" src="{{item.link}}" alt="{{item.displayLink}}"></a>
+    </div>
+  </div>
+</div>
+<app-no-result-tab *ngIf="no_res"></app-no-result-tab>

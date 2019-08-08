@@ -1,0 +1,40 @@
+
+<div class="pt-4">
+
+<div class="progress prg_bar" [@prog_slider]="prog_tog" [class.d-none]="prog_bar">
+<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div [@tab_slider]='prog_tog' class="container">
+<h5 class="d-flex justify-content-center">{{title}}</h5>
+<div >
+  <div>
+  <div class="float-left">
+    <button  id="sub" class="btn-sm btn-light ml-3 mr-4" (click)="get_res()"><i class="material-icons align-middle">chevron_left</i> List</button>
+  </div>
+  <div class="float-right">
+    <a href="{{url}}" target="_blank"><img src="http://csci571.com/hw/hw8/Images/facebook.png" width=40 height=40></a>
+    <button class="btn-sm btn-light" (click)="add_wish()"><i class="material-icons md-18 align-middle {{fl['cart']=='remove_shopping_cart'? 'yellow':''}}">{{fl['cart']}}</i></button>
+  </div>
+  </div>
+  <br><br>
+  <div class="float-right">
+    <ul class="nav nav-tabs nav-dark">
+      <li class="nav-item"><a class="nav-link active med" data-toggle="tab" (click)="prod()">Product</a></li>
+      <li class="nav-item"><a class="nav-link med" data-toggle="tab" (click)="photos()">Photos</a></li>
+      <li class="nav-item"><a class="nav-link med" data-toggle="tab" (click)="ship()">Shipping</a></li>
+      <li class="nav-item"><a class="nav-link med" data-toggle="tab" (click)="seller()">Seller</a></li>
+      <li class="nav-item"><a class="nav-link med chn" data-toggle="tab" (click)="simi_prod()">{{tab_name}}</a></li>
+    </ul>
+  </div>
+  <br><br>
+
+  <!-- {{fl | json}} -->
+  <app-det-prod-tab *ngIf="(fl['prod'])"></app-det-prod-tab>
+  <!-- <app-no-tab></app-no-tab> -->
+  <app-det-photo-tab *ngIf="(fl['photos'])"></app-det-photo-tab>
+  <app-det-ship-tab *ngIf="(fl['ship'])"></app-det-ship-tab>
+  <app-det-sell-tab *ngIf="(fl['sell'])"></app-det-sell-tab>
+  <app-det-simi-tab *ngIf="(fl['simi'])"></app-det-simi-tab>
+</div>
+</div>
+</div>

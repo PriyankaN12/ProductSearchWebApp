@@ -1,0 +1,10 @@
+td a,td a:hover, td a:visited{
+  color:teal;
+  cursor: pointer;
+}
+@media (max-width:770px) {
+  .tbl td{
+    width:50%;
+  }
+
+}

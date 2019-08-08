@@ -1,0 +1,37 @@
+.tabLeft{
+  float:left;
+}
+.tabRight{
+  float: right;
+}
+.yellow{
+  color:#DAA520	;
+}
+flex {
+ display: flex;
+ justify-content: space-between;
+}
+
+a.nav-link.active{
+  color:white;
+  background-color: black;
+}
+@media (min-width:770px) {
+  .container
+  { width: 80% !important;
+    margin: auto !important;
+  }
+  .prg_bar{
+    width:75%;
+  }
+ }
+
+ @media (max-width:770px) {
+   .med{
+     padding-left: 5px;
+     padding-right: 5px;
+   }
+   .chn{
+     content:'Related';
+   }
+ }

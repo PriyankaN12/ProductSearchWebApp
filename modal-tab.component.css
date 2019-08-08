@@ -1,0 +1,11 @@
+.bord{
+  border-style: solid;
+  border-width: 10px;
+  border-color: black;
+  border-radius: 4px;
+  padding: 1px;
+  background-color: white;
+}
+span.carousel-control-next-icon, span.carousel-control-prev-icon{
+  background-color: black;
+}

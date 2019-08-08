@@ -1,0 +1,39 @@
+<table class="table table-striped table-dark">
+    <tbody>
+        <tr *ngIf="details.hasOwnProperty('shippingServiceCost')">
+          <th style="width: 50%">Shiping Cost</th>
+          <td style="width: 50%"> {{get_shipPrice(details)}}</td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('shipToLocations')">
+          <th style="width: 50%">Shipping Locations</th>
+          <td style="width: 50%"> {{details['shipToLocations'][0]}}</td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('handlingTime') ">
+          <th style="width: 50%">Handling time</th>
+          <td style="width: 50%"> {{get_time(details['handlingTime'][0])}}</td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('expeditedShipping')">
+          <th style="width: 50%">Expedited Shipping</th>
+          <td style="width: 50%">
+            <i class="material-icons md-18 align-middle green" *ngIf="details['expeditedShipping'][0]=='true'">check</i>
+            <i class="material-icons md-18 align-middle red" *ngIf="details['expeditedShipping'][0]=='false'" >close</i>
+
+          </td>
+        </tr>
+        <tr *ngIf="details.hasOwnProperty('oneDayShippingAvailable')">
+          <th style="width: 50%">One Day Shipping</th>
+          <td style="width: 50%">
+            <i class="material-icons md-18 align-middle green" *ngIf="details['oneDayShippingAvailable'][0]=='true'">check</i>
+            <i class="material-icons md-18 align-middle red" *ngIf="details['oneDayShippingAvailable'][0]=='false'" >close</i>
+          </td>
+        </tr>
+        <tr *ngIf="item.hasOwnProperty('returnsAccepted')">
+          <th style="width: 50%">Return Accepted </th>
+          <td style="width: 50%">
+            <i class="material-icons md-18 align-middle green" *ngIf="item['returnsAccepted'][0]=='true'">check</i>
+            <i class="material-icons md-18 align-middle red" *ngIf="item['returnsAccepted'][0]=='false'" >close</i>
+          </td>
+        </tr>
+    </tbody>
+
+</table>

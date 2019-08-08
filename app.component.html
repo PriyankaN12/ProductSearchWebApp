@@ -1,0 +1,138 @@
+
+  <div class="container bg-black text-white pb-3 mx-auto">
+    <form id="form_8" method="post" onsubmit="" [formGroup]="fm">
+
+      <div class="d-flex justify-content-center pt-4">
+        <h2 id="pr" >Product Search</h2>
+      </div>
+        <div class="form-group row  mb-0 mt-4" id="key_div">
+          <label id="key_l" class="col-xs-4 col-md-2 col-sm-2 offset-sm-2 col-sm-form-label required pt-2">Keyword</label>
+          <div class="col-xs-5 col-md-5 col-sm-7 pl-xs-0">
+            <input id="key" class="form-control" [class.is-invalid]="key_ch()" name="key" formControlName="key" type="text" size="35" placeholder="Enter Product Name (eg. Iphone 8)">
+          </div>
+        </div>
+
+        <app-invalid-key *ngIf="key_ch()"></app-invalid-key>
+        <div class="form-group row mt-3 mb-3">
+          <label id="cat_l" class="col-sm-2 offset-sm-2 col-sm-form-label pt-2" >Category</label>
+          <div class="col-sm-4 col-md-2">
+            <select id="cat" name="cat" class="form-control" formControlName="cat">
+              <option value="all">All Categories</option>
+              <option value="550">Art</option>
+              <option value="2984">Baby</option>
+              <option value="267">Books</option>
+              <option value="11450">Clothing, Shoes & Accessories</option>
+              <option value="58058">Computers/Tablets & Networking  </option>
+              <option value="26395">Health & Beauty</option>
+              <option value="11233">Music </option>
+              <option value="1249">Video Games & Consoles</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row mb-3">
+          <label id="cond_l" class="col-sm-2 col-xs-4 offset-sm-2 col-sm-form-label">Condition</label>
+          <div class="col-sm-7" formGroupName="cond">
+            <div class="form-check form-check-inline" >
+              <input type="checkbox" name="cond1" value="new" class="form-check-input" formControlName="c_new"> New
+              <!-- <label class="form-check-label" for="inlineCheckbox1">New</label> -->
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="checkbox" name="cond2" value="used" class="form-check-input" formControlName="c_used"> Used
+              <!-- <label class="form-check-label" for="inlineCheckbox1">Used</label> -->
+            </div>
+            <div class="form-check form-check-inline">
+            <input type="checkbox" name="cond3" value="unspecified" class="form-check-input" formControlName="c_un"> Unspecified
+             <!-- <label class="form-check-label" for="inlineCheckbox1">Unspecified</label> -->
+           </div>
+         </div>
+       </div>
+
+        <div class="form-group row mb-3">
+          <label id="ship_l" class="col-sm-2 offset-sm-2 col-sm-form-label">Shipping Options</label>
+          <div class="col-sm-7" formGroupName="ship">
+            <div class="form-check form-check-inline" >
+            <input type="checkbox" name="ship1" value="local" class="form-check-input" formControlName="s_loc"> Local Pickup
+            </div>
+            <div class="form-check form-check-inline">
+            <input type="checkbox" name="ship2" value="free" class="form-check-input" formControlName="s_fr"> Free Shipping
+            </div>
+          </div>
+        </div>
+
+<!-- {{this}} -->
+        <div class="form-group row mb-3">
+          <label id="dist_l" class="col-sm-2 offset-sm-2 col-sm-form-label">Distance (Miles)</label>
+          <div class="col-sm-2">
+            <input id="dist" class="form-control" name="dist" type="number" min=0 placeholder="10" formControlName="dist">
+          </div>
+        </div>
+        <!-- {{fm.controls.loc.value}} -->
+        <div class="form-group row mb-0">
+          <label id="frm_l" class="col-sm-2 offset-sm-2 col-sm-form-label required">From</label>
+          <div class="col-sm-7">
+            <input type="radio" value="here" onclick="" formControlName="loc" (change)="zip_en()"> Current Location
+          </div>
+        </div>
+
+        <div class="form-group row mt-0 mb-1">
+          <div class="col-sm-7 offset-sm-4 ">
+            <input type="radio" value="zipcode" formControlName="loc" (change)="zip_en()"> Other. Please specify zip code:
+          </div>
+        </div>
+
+        <div class="form-group row mb-0">
+          <div class="col-sm-5 offset-sm-4">
+            <input id="zip" matInput [matAutocomplete]="autor" formControlName="zip" class="form-control" type="text" [class.is-invalid]="zip_ch()" (keyup)="autoComp()">
+            <mat-autocomplete #autor="matAutocomplete">
+              <mat-option *ngFor="let op of options" [value]="op" class="bg-light text-dark">
+                {{ op}}
+              </mat-option>
+              </mat-autocomplete>
+          </div>
+        </div>
+
+        <app-invalid-zip *ngIf="zip_ch()"></app-invalid-zip>
+
+        <div class="form-group row offset-2 mb-1 mt-4">
+          <button  id="sub" class="btn-sm btn-light ml-3 mr-4" [disabled]="search_en_ch() || s_f" (click)="search_p()">
+            <i class="material-icons md-18 align-middle">search</i><span>Search</span>
+          </button>
+          <button  id="cl" class="btn-sm btn-light ml-3 mr-4" (click)="reset()">
+            <i class="material-icons md-18 align-middle">clear_all</i>Clear
+          </button>
+        </div>
+    </form>
+  </div>
+
+  <!-- <div class="form-group row offset-sm-5 mb-1 mt-2">
+    <button  id="sub" class="btn bg-black text-white ml-3 mr-4" (click)="restab()">
+      Results
+    </button>
+    <button  id="cl" class="btn bg-white ml-2 mr-4" (click)="wishtab()">
+      Wishlist
+    </button>
+  </div> -->
+
+  <div class="form-group row offset-md-5 offset-sm-5 offset-xs-5 offset-sm-2 mb-1 mt-2 mycl">
+    <ul class="nav nav-pills nav-dark">
+      <li class="nav-item"><a class="nav-link"[class.active]="rest" (click)="restab()">Results</a></li>
+      <li class="nav-item"><a class="nav-link" [class.active]="!rest" (click)="wishtab()">Wish List</a></li>
+    </ul>
+  </div>
+  <div class="d-flex justify-content-center pt-4">
+  <div class="progress prg_bar" [class.d-none]="!prog_bar_f">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  </div>
+
+
+<div *ngIf="flgs['result'] && (!prog_bar || !prog_bar_f)">
+  <app-result-tab ></app-result-tab>
+</div>
+
+<div *ngIf="flgs['det'] && (!prog_bar || !prog_bar_f)">
+<app-details-tab ></app-details-tab>
+</div>
+<app-wishlist *ngIf="flgs['wishlist']"></app-wishlist>
+<router-outlet></router-outlet>

@@ -1,0 +1,34 @@
+ngb-pagination ::ng-deep ul > li:not(.active) > a {
+      background-color: white !important;
+      color: black !important;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+      background-color: black !important;
+      border-color: black !important;
+}
+ngb-pagination ::ng-deep ul > li:not(.active) > a:hover {
+      background-color:#E8E7E7   !important;
+}
+ngb-pagination ::ng-deep ul > li.disabled > a {
+    color: gray !important;
+}
+.curs{
+  cursor: text;
+}
+.yellow{
+  color:#DAA520	;
+}
+.selight{
+  background-color:lightgray;
+}
+@media (min-width:750px) { 
+  .container
+  { width: 75% !important;
+    margin: auto !important;
+  }
+  .prg_bar{
+    width:75%;
+
+  }
+ }
